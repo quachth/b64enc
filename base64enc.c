@@ -59,14 +59,14 @@ int main(int argc, char *argv[]) {
                 out[3] = in[2] & 63;                                    // low 6 bits from the third character
 
                 if (bytes_read < 3) {                                   // if under 3 bytes were read, replace characters 3 and/or 4 with "="
-                        out[3] = (sizeof (alphabet) / sizeof (alphabet[0])-1);
+                        out[3] = (sizeof (alphabet) / sizeof (alphabet[0])-2);
                         if (bytes_read == 1) {
-                                out[2] = (sizeof (alphabet) / sizeof (alphabet[0])-1);
+                                out[2] = (sizeof (alphabet) / sizeof (alphabet[0])-2);
                         }
                 }
 
                 for (int i=0; i<4; i++) {                               // iterates through encoded (I forgot to finish this comment, will fix)
-                        fwrite(alphabet+out[i], sizeof (alphabet[0]), 1, stdout);
+                        fwrite(&alphabet[out[i]], sizeof (alphabet[0]), 1, stdout);
                         if (ferror(stdout)) {
                                 err(errno, "fwrite failed.");
                         }
