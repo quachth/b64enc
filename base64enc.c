@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
                         }
                 }
 
-                for (int i=0; i<4; i++) {                               // iterates through encoded
+                for (int i=0; i<4; i++) {                               // iterates through encoded (I forgot to finish this comment, will fix)
                         fwrite(alphabet+out[i], sizeof (alphabet[0]), 1, stdout);
                         if (ferror(stdout)) {
                                 err(errno, "fwrite failed.");
